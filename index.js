@@ -34,6 +34,44 @@ mongoose
     return Recipe.insertMany(data)
   })
 
+  .then((response) => {
+    // actualizar
+    return Recipe.findOneAndUpdate(
+      { title: "Rigatoni alla Genovese" }, // query
+      { duration: 100 }, //valores nuevos
+      { new: true } //Me devuelve Andrea ya actualizada
+    );
+  })
+
+  .then((response) => {
+    console.log(response);
+
+    // borrar
+    return Recipe.deleteOne(
+      { title: "Carrot Cake" }
+    );
+  })
+
+  .then((response) => {
+    // borrar
+    return Recipe.deleteOne(
+      { title: "Carrot Cake" }
+    );
+  })
+
+  .then((response) => {
+    // cerrar conex
+    console.log('Borrado con exito');
+    mongoose.connection.close()
+  })
+
+  .then((response) => {
+    // cerrar conex
+    console.log('funciona');
+  })
+
   .catch(error => {
     console.error('Error connecting to the database', error);
   });
+
+
