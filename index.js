@@ -67,7 +67,7 @@ mongoose
 
   .then((response) => {
     // cerrar conex
-    console.log('funciona');
+    console.log('cerrado');
   })
 
   .catch(error => {
